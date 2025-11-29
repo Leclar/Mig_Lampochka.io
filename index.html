@@ -1,23 +1,23 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
 <title>Мигающая лампочка</title>
 <style>
   body {
-    background-color: black;      /* фон страницы */
-    color: white;                 /* цвет текста */
+    background-color: black;
+    color: white;
     display: flex;
     flex-direction: column;
-    align-items: center;          /* центр по горизонтали */
-    justify-content: center;      /* центр по вертикали */
-    height: 100vh;                /* высота на весь экран */
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
     font-family: Arial, sans-serif;
   }
 
   img {
-    width: 200px;                 /* увеличиваем лампочку */
-    margin: 20px 0;               /* отступ сверху и снизу */
+    width: 250px; /* можно увеличить по желанию */
+    margin: 20px 0;
   }
 
   button {
@@ -45,30 +45,29 @@
 <button id="onBtn">Включить</button>
 <button id="offBtn">Выключить</button>
 
-<img id="myLight" src="lamp_off.png">
+<img id="myLight" src="https://cdn.qwenlm.ai/output/e635039a-3e5f-40e1-9ddb-54868f3069d8/t2i/87b96461-e7d6-4b38-9f38-4dd8e91d93d0/1764425030.png?key=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZXNvdXJjZV91c2VyX2lkIjoiZTYzNTAzOWEtM2U1Zi00MGUxLTlkZGItNTQ4NjhmMzA2OWQ4IiwicmVzb3VyY2VfaWQiOiIxNzY0NDI1MDMwIiwicmVzb3VyY2VfY2hhdF9pZCI6IjhmN2QwYmUwLWY2MDAtNDNhZC1hZjQwLTk2NjZmMjE4Zjc3MSJ9.d_eIqTEyp4bIhOuHKgDtVkYXKxAeOXFeUzR8DUZYs7U&x-oss-process=image/resize,m_mfit,w_450,h_450">
 
 <script>
   const light = document.getElementById("myLight");
   const onBtn = document.getElementById("onBtn");
   const offBtn = document.getElementById("offBtn");
 
+  const lampOn = "https://cdn.qwenlm.ai/output/e635039a-3e5f-40e1-9ddb-54868f3069d8/t2i/b533916f-b24a-4b81-a4e6-d78476951261/1764425061.png?key=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZXNvdXJjZV91c2VyX2lkIjoiZTYzNTAzOWEtM2U1Zi00MGUxLTlkZGItNTQ4NjhmMzA2OWQ4IiwicmVzb3VyY2VfaWQiOiIxNzY0NDI1MDYxIiwicmVzb3VyY2VfY2hhdF9pZCI6IjhmN2QwYmUwLWY2MDAtNDNhZC1hZjQwLTk2NjZmMjE4Zjc3MSJ9.Gn8vPX-ApxXWtO0fcoK7dxXKdBxFPDwC2HYtvat1HZo&x-oss-process=image/resize,m_mfit,w_450,h_450";
+  const lampOff = "https://cdn.qwenlm.ai/output/e635039a-3e5f-40e1-9ddb-54868f3069d8/t2i/87b96461-e7d6-4b38-9f38-4dd8e91d93d0/1764425030.png?key=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZXNvdXJjZV91c2VyX2lkIjoiZTYzNTAzOWEtM2U1Zi00MGUxLTlkZGItNTQ4NjhmMzA2OWQ4IiwicmVzb3VyY2VfaWQiOiIxNzY0NDI1MDMwIiwicmVzb3VyY2VfY2hhdF9pZCI6IjhmN2QwYmUwLWY2MDAtNDNhZC1hZjQwLTk2NjZmMjE4Zjc3MSJ9.d_eIqTEyp4bIhOuHKgDtVkYXKxAeOXFeUzR8DUZYs7U&x-oss-process=image/resize,m_mfit,w_450,h_450";
+
   let intervalId;
 
   function startBlinking() {
     if (intervalId) return;
     intervalId = setInterval(() => {
-      if (light.src.includes("lamp_off.png")) {
-        light.src = "lamp_green.png";
-      } else {
-        light.src = "lamp_off.png";
-      }
+      light.src = (light.src === lampOff) ? lampOn : lampOff;
     }, 500);
   }
 
   function stopBlinking() {
     clearInterval(intervalId);
     intervalId = null;
-    light.src = "lamp_off.png";
+    light.src = lampOff;
   }
 
   onBtn.addEventListener("click", startBlinking);
@@ -77,3 +76,4 @@
 
 </body>
 </html>
+
